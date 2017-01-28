@@ -118,9 +118,15 @@ open class URLSessionConfiguration : NSObject, NSCopying {
     open class var `default`: URLSessionConfiguration {
         return URLSessionConfiguration()
     }
-    open class var ephemeral: URLSessionConfiguration { NSUnimplemented() }
 
-    open class func background(withIdentifier identifier: String) -> URLSessionConfiguration { NSUnimplemented() }
+    // open class var ephemeral: URLSessionConfiguration { 
+        // NSUnimplemented() 
+    // }
+
+    open class func background(withIdentifier identifier: String) -> URLSessionConfiguration { 
+        // NSUnimplemented() 
+        return URLSessionConfiguration()
+    }
     
     /* identifier for the background session configuration */
     open var identifier: String?

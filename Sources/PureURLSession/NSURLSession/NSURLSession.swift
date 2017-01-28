@@ -198,7 +198,12 @@ open class URLSession : NSObject {
      * The shared session uses the currently set global NSURLCache,
      * NSHTTPCookieStorage and NSURLCredentialStorage objects.
      */
-    open class var shared: URLSession { NSUnimplemented() }
+    //open class var shared: URLSession { 
+        // NSUnimplemented() 
+    //}
+
+    // ROB: Replace this with proper shared object.
+    // open static var shared: URLSession = URLSession()
     
     /*
      * Customization of URLSession occurs during creation of a new session.
@@ -290,15 +295,25 @@ open class URLSession : NSObject {
      * cancellation is subject to the state of the task, and some tasks may
      * have already have completed at the time they are sent -cancel.
      */
-    open func invalidateAndCancel() { NSUnimplemented() }
+    open func invalidateAndCancel() { 
+        // NSUnimplemented() 
+    }
     
-    open func reset(completionHandler: @escaping () -> Void) { NSUnimplemented() } /* empty all cookies, cache and credential stores, removes disk files, issues -flushWithCompletionHandler:. Invokes completionHandler() on the delegate queue if not nil. */
+    open func reset(completionHandler: @escaping () -> Void) { 
+        // NSUnimplemented() 
+    } /* empty all cookies, cache and credential stores, removes disk files, issues -flushWithCompletionHandler:. Invokes completionHandler() on the delegate queue if not nil. */
     
-    open func flush(completionHandler: @escaping () -> Void)  { NSUnimplemented() }/* flush storage to disk and clear transient network caches.  Invokes completionHandler() on the delegate queue if not nil. */
+    open func flush(completionHandler: @escaping () -> Void)  { 
+        // NSUnimplemented() 
+    }/* flush storage to disk and clear transient network caches.  Invokes completionHandler() on the delegate queue if not nil. */
     
-    open func getTasksWithCompletionHandler(completionHandler: @escaping ([URLSessionDataTask], [URLSessionUploadTask], [URLSessionDownloadTask]) -> Void)  { NSUnimplemented() }/* invokes completionHandler with outstanding data, upload and download tasks. */
+    open func getTasksWithCompletionHandler(completionHandler: @escaping ([URLSessionDataTask], [URLSessionUploadTask], [URLSessionDownloadTask]) -> Void)  { 
+        // NSUnimplemented() 
+    }/* invokes completionHandler with outstanding data, upload and download tasks. */
     
-    open func getAllTasks(completionHandler: @escaping ([URLSessionTask]) -> Void)  { NSUnimplemented() }/* invokes completionHandler with all outstanding tasks. */
+    open func getAllTasks(completionHandler: @escaping ([URLSessionTask]) -> Void)  { 
+        // NSUnimplemented() 
+    }/* invokes completionHandler with all outstanding tasks. */
     
     /*
      * URLSessionTask objects are always created in a suspended state and
@@ -328,7 +343,10 @@ open class URLSession : NSObject {
     }
     
     /* Creates an upload task with the given request.  The previously set body stream of the request (if any) is ignored and the URLSession:task:needNewBodyStream: delegate will be called when the body payload is required. */
-    open func uploadTask(withStreamedRequest request: URLRequest) -> URLSessionUploadTask { NSUnimplemented() }
+    open func uploadTask(withStreamedRequest request: URLRequest) -> URLSessionUploadTask { 
+        // NSUnimplemented() 
+        return URLSessionUploadTask()
+    }
     
     /* Creates a download task with the given request. */
     open func downloadTask(with request: URLRequest) -> URLSessionDownloadTask {
@@ -342,11 +360,17 @@ open class URLSession : NSObject {
     }
     
     /* Creates a download task with the resume data.  If the download cannot be successfully resumed, URLSession:task:didCompleteWithError: will be called. */
-    open func downloadTask(withResumeData resumeData: Data) -> URLSessionDownloadTask { NSUnimplemented() }
+    open func downloadTask(withResumeData resumeData: Data) -> URLSessionDownloadTask { 
+        return URLSessionDownloadTask()
+        //     NSUnimplemented() 
+    }
     
     /* Creates a bidirectional stream task to a given host and port.
      */
-    open func streamTask(withHostName hostname: String, port: Int) -> URLSessionStreamTask { NSUnimplemented() }
+    open func streamTask(withHostName hostname: String, port: Int) -> URLSessionStreamTask { 
+        //  NSUnimplemented()
+        return URLSessionStreamTask()
+    }
 }
 
 
@@ -482,7 +506,10 @@ extension URLSession {
        return downloadTask(with: _Request(url), behavior: .downloadCompletionHandler(completionHandler)) 
     }
 
-    open func downloadTask(withResumeData resumeData: Data, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask { NSUnimplemented() }
+    open func downloadTask(withResumeData resumeData: Data, completionHandler: @escaping (URL?, URLResponse?, Error?) -> Void) -> URLSessionDownloadTask { 
+        // NSUnimplemented() 
+        return URLSessionDownloadTask()
+    }
 }
 
 internal extension URLSession {

@@ -195,7 +195,9 @@ open class URLSessionTask : NSObject, NSCopying {
      * cases, the task may signal other work before it acknowledges the
      * cancelation.  -cancel may be sent to a task that has been suspended.
      */
-    open func cancel() { NSUnimplemented() }
+    open func cancel() { 
+        // NSUnimplemented() 
+    }
     
     /*
      * The current state of the task within the session.
@@ -472,7 +474,8 @@ fileprivate extension URLSessionTask {
                 })
             return URLSessionTask._TransferState(url: url, bodyDataDrain: drain, bodySource: source)
         case .stream:
-            NSUnimplemented()
+            return URLSessionTask._TransferState(url: url, bodyDataDrain: drain)
+            // NSUnimplemented()
         }
         
     }
@@ -803,7 +806,7 @@ extension URLSessionTask: _EasyHandleDelegate {
     }
     func seekInputStream(to position: UInt64) throws {
         // We will reset the body sourse and seek forward.
-        NSUnimplemented()
+        // NSUnimplemented()
     }
     func updateProgressMeter(with propgress: _EasyHandle._Progress) {
         //TODO: Update progress. Note that a single URLSessionTask might
@@ -1030,10 +1033,12 @@ fileprivate extension URLSessionTask {
             internalState = .transferInProgress(ts)
         case .becomeDownload:
             /* Turn this request into a download */
-            NSUnimplemented()
+            // NSUnimplemented()
+            break
         case .becomeStream:
             /* Turn this task into a stream task */
-            NSUnimplemented()
+            // NSUnimplemented()
+            break
         }
     }
     
@@ -1148,7 +1153,9 @@ open class URLSessionDownloadTask : URLSessionTask {
      * If resume data cannot be created, the completion handler will be
      * called with nil resumeData.
      */
-    open func cancel(byProducingResumeData completionHandler: @escaping (Data?) -> Void) { NSUnimplemented() }
+    open func cancel(byProducingResumeData completionHandler: @escaping (Data?) -> Void) { 
+        // NSUnimplemented() 
+    }
 }
 
 /*
@@ -1181,14 +1188,18 @@ open class URLSessionStreamTask : URLSessionTask {
      * If an error occurs, any outstanding reads will also fail, and new
      * read requests will error out immediately.
      */
-    open func readData(ofMinLength minBytes: Int, maxLength maxBytes: Int, timeout: TimeInterval, completionHandler: @escaping (Data?, Bool, Error?) -> Void) { NSUnimplemented() }
+    open func readData(ofMinLength minBytes: Int, maxLength maxBytes: Int, timeout: TimeInterval, completionHandler: @escaping (Data?, Bool, Error?) -> Void) {
+     // NSUnimplemented() 
+    }
     
     /* Write the data completely to the underlying socket.  If all the
      * bytes have not been written by the timeout, a timeout error will
      * occur.  Note that invocation of the completion handler does not
      * guarantee that the remote side has received all the bytes, only
      * that they have been written to the kernel. */
-    open func write(_ data: Data, timeout: TimeInterval, completionHandler: @escaping (Error?) -> Void) { NSUnimplemented() }
+    open func write(_ data: Data, timeout: TimeInterval, completionHandler: @escaping (Error?) -> Void) { 
+        // NSUnimplemented() 
+    }
     
     /* -captureStreams completes any already enqueued reads
      * and writes, and then invokes the
@@ -1196,7 +1207,9 @@ open class URLSessionStreamTask : URLSessionTask {
      * message. When that message is received, the task object is
      * considered completed and will not receive any more delegate
      * messages. */
-    open func captureStreams() { NSUnimplemented() }
+    open func captureStreams() { 
+        // NSUnimplemented() 
+    }
     
     /* Enqueue a request to close the write end of the underlying socket.
      * All outstanding IO will complete before the write side of the
@@ -1204,26 +1217,34 @@ open class URLSessionStreamTask : URLSessionTask {
      * back to the client, so best practice is to continue reading from
      * the server until you receive EOF.
      */
-    open func closeWrite() { NSUnimplemented() }
+    open func closeWrite() { 
+        // NSUnimplemented() 
+    }
     
     /* Enqueue a request to close the read side of the underlying socket.
      * All outstanding IO will complete before the read side is closed.
      * You may continue writing to the server.
      */
-    open func closeRead() { NSUnimplemented() }
+    open func closeRead() { 
+        // NSUnimplemented() 
+    }
     
     /*
      * Begin encrypted handshake.  The hanshake begins after all pending
      * IO has completed.  TLS authentication callbacks are sent to the
      * session's -URLSession:task:didReceiveChallenge:completionHandler:
      */
-    open func startSecureConnection() { NSUnimplemented() }
+    open func startSecureConnection() { 
+        // NSUnimplemented() 
+    }
     
     /*
      * Cleanly close a secure connection after all pending secure IO has
      * completed.
      */
-    open func stopSecureConnection() { NSUnimplemented() }
+    open func stopSecureConnection() { 
+        // NSUnimplemented() 
+    }
 }
 
 /* Key in the userInfo dictionary of an NSError received during a failed download. */
